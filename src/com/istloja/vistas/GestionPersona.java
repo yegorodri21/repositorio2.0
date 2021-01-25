@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.istloja.vistas;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
@@ -24,7 +23,7 @@ public class GestionPersona extends JFrame{
     //titulo de la ventana 
     this.setTitle("ventana");
     // tamaño inicial de la ventana 
-    this.setSize(300,200);
+    this.setSize(300,400);
     panelTitulo.setSize(300,600);
     panelCuerpo.setSize(200,300);
     // se agrega un layout distribuir los componentes 
@@ -56,6 +55,8 @@ public class GestionPersona extends JFrame{
         modificar.setText("Modificar");
      JButton eliminar=new JButton();
         eliminar.setText("Eliminar");
+     JButton traer=new JButton();
+        traer.setText("Traer");
              
         panelTitulo.add(label);
    
@@ -64,6 +65,8 @@ public class GestionPersona extends JFrame{
         panelTitulo.add(guardar);
         panelTitulo.add(modificar);
         panelTitulo.add(eliminar);
+        panelTitulo.add(traer);
+
     
     this.setVisible(true);
     this.setLocationRelativeTo(null);

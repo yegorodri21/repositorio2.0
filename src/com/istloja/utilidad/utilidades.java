@@ -40,7 +40,7 @@ import java.util.regex.Pattern;
         } catch (NumberFormatException nfe) {
         cedulaCorrecta = false;
         } catch (Exception err) {
-        System.out.println("Una excepcion ocurrio en el proceso de validadcion");
+        System.out.println("Una excepcion ocurrio en el proceso de validacion");
         cedulaCorrecta = false;
         }
 
@@ -51,6 +51,9 @@ import java.util.regex.Pattern;
         }
 
   public boolean validarnumero (String numero){
+      if(numero.charAt(0)!='0'){
+          return false;
+      }
       if (numero.isEmpty()){
           return false;
       }else if(numero.length()<10){
@@ -58,13 +61,9 @@ import java.util.regex.Pattern;
       }
       try {
           int validarnumero= Integer.parseInt (numero);
-          double validarnumero1=validarnumero/(Math.pow(10, 10));
-          System.out.println(validarnumero1);
-          if(validarnumero1 <1){
           return true;
-          }
       }catch (Exception e){
-      }return false;
+      return false;}
   }
    public boolean validarcorreo(String email) {
         // Patron para validar el email

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import com.istloja.conexionbd.Conexion;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +33,9 @@ public class Personabd {
     }
     public boolean editarPersona(Persona persona){
             
-            boolean editar= false;
                     Statement stm=null;
                     Connection con=null;
+                    boolean editar= false;
              String sql = " UPDATE `bdejercicio1`.`persona` SET `id_persona` = '"+String.valueOf(persona.getIdPersona())
                      +"', `cedula` = '"+persona.getCedula()
                      +"', `Nombres` = '"+persona.getNombre()
@@ -50,8 +51,7 @@ public class Personabd {
             stm= con.createStatement();
             stm.execute(sql);
             editar = true;
-            stm.close();
-        } catch(Exception e){
+        } catch(SQLException e){
             System.out.println("Error: "+e.getMessage());
         } 
           return editar;
@@ -78,7 +78,7 @@ public class Personabd {
         Connection co=null;
         Statement stm= null;
         ResultSet rs=null;
-        
+        Persona c=null;
         String sql ="SELECT * FROM `bdejercicio1`.`persona`;";
         List<Persona> listaPersonas = new ArrayList<Persona>();
         try{
@@ -86,7 +86,7 @@ public class Personabd {
             stm= co.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()){
-                Persona c = new Persona();
+                c = new Persona();
                 c.setIdPersona(rs.getInt(1));
                 c.setCedula(rs.getString(2));
                 c.setNombre(rs.getString(3));
@@ -104,4 +104,60 @@ public class Personabd {
         }
         return listaPersonas;
     }
+    public Persona getPersonaCedula(String cedula){
+     Connection co =null;
+        Statement stm=null;
+        ResultSet rs=null;
+        Persona c =null;
+        String sql="SELECT * FROM bdejercicio1.persona where cedula like "+cedula+";";
+        try {
+            co =  new  Conexion().conectarBaseDatos ();
+            stm = co.createStatement ();
+            rs = stm.executeQuery (sql);
+            while (rs.next ()) {
+                c = new Persona ();
+                c.setIdPersona (rs.getInt ( 1 ));
+                c.setCedula (rs.getString ( 2 ));
+                c.setNombre (rs.getString ( 3 ));
+                c.setApellido (rs.getString ( 4 ));
+                c.setDireccion (rs.getString ( 5 ));
+                c.setCorreo (rs.getString ( 6 ));
+                c.setTelefono (rs.getString ( 7 ));
+            }
+            stm . close();
+            rs . close();
+            co . close();
+        } catch ( SQLException e) {
+            System.out.println("Error: "+ e.getMessage());
+        }
+        return c;
     }
+    public Persona getPersonatelefono(String telefono){
+     Connection co =null;
+        Statement stm=null;
+        ResultSet rs=null;
+        Persona c =null;
+        String sql="SELECT * FROM bdejercicio1.persona where telefono = "+telefono+";";
+        try {
+            co =  new  Conexion().conectarBaseDatos ();
+            stm = co.createStatement ();
+            rs = stm.executeQuery (sql);
+            while (rs.next ()) {
+                c = new Persona ();
+                c.setIdPersona (rs.getInt ( 1 ));
+                c.setCedula (rs.getString ( 2 ));
+                c.setNombre (rs.getString ( 3 ));
+                c.setApellido (rs.getString ( 4 ));
+                c.setDireccion (rs.getString ( 5 ));
+                c.setCorreo (rs.getString ( 6 ));
+                c.setTelefono (rs.getString ( 7 ));
+            }
+            stm . close();
+            rs . close();
+            co . close();
+        } catch ( SQLException e) {
+            System.out.println("Error: "+ e.getMessage());
+        }
+        return c;
+    }
+}

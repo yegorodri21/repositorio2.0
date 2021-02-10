@@ -4,10 +4,16 @@ import com.istloja_modelo.Persona;
 import java.sql.Connection;
 import java.sql.Statement;
 import com.istloja.conexionbd.Conexion;
+import com.istloja.vistas.GestionContable;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Personabd {
@@ -159,5 +165,5 @@ public class Personabd {
             System.out.println("Error: "+ e.getMessage());
         }
         return c;
-    }
+    }       
 }

@@ -1,9 +1,6 @@
 
 package conexionbasedatos;
-import com.istloja.conexionbd.Conexion;
 import com.istloja.controlador.Personabd;
-import com.istloja.vistas.GestionPersona;
-import com.istloja_modelo.Persona;
 
 public class ConexionBaseDatos {
     public static void main (String[]in){
@@ -33,7 +30,6 @@ public class ConexionBaseDatos {
 //    }else{
 //            System.out.println("Error");
 //    }
-    GestionPersona gestionpersona=new GestionPersona();
 
 }
 }

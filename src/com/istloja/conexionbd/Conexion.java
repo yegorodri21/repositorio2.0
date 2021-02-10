@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Conexion {
-    private Connection conexion;
+   public Connection conexion;
 //    public static void main (String[]in){
 //        Clase1coneccionbasededatos baseDatosMySql= new Clase1coneccionbasededatos();
 //        if (baseDatosMySql.conexion()){

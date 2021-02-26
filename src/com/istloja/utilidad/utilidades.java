@@ -72,5 +72,12 @@ import java.util.regex.Pattern;
         Matcher mather = pattern.matcher(email);
         return mather.find();
     }
+   public boolean numeros (String numero){
+      try {
+          int validarnumero= Integer.parseInt (numero);
+          return true;
+      }catch (Exception e){
+      return false;}
+  }
     
 }

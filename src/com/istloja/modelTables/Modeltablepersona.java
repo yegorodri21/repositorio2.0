@@ -5,6 +5,7 @@
  */
 package com.istloja.modelTables;
 
+import com.istloja.vistas.GestionContable;
 import com.istloja_modelo.Persona;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -16,9 +17,12 @@ import javax.swing.table.AbstractTableModel;
 public class Modeltablepersona extends AbstractTableModel{
     public String [] m_colNames = {"cedula", "Nombres", "Apellidos", "Direccion", "Correo", "telefono" };
     public List<Persona> personas;
+    private ComunicacionPersona comunicacionPersona;
+    private GestionContable gcontable;
     
-    public Modeltablepersona(List<Persona>personas){
+    public Modeltablepersona(List<Persona>personas,GestionContable gcontable){
         this.personas=personas;
+        this.gcontable = gcontable;
     }
     @Override
     public int getRowCount() {
@@ -53,5 +57,15 @@ public class Modeltablepersona extends AbstractTableModel{
     public String getColumnName(int column) {
         return m_colNames[column]; 
     }
-            
+    @Override
+    public boolean isCellEditable (int rowIndex, int columnIndex) {
+        gcontable.clickPersona(personas.get(rowIndex));
+        return super.isCellEditable(rowIndex, columnIndex);
+    }
+    public List<Persona> getPersonas(){
+        return personas;
+    }      
+    public void setPersonas(List<Persona> personas){
+        this.personas= personas;
+    }
 }

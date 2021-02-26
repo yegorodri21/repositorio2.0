@@ -4,16 +4,10 @@ import com.istloja_modelo.Persona;
 import java.sql.Connection;
 import java.sql.Statement;
 import com.istloja.conexionbd.Conexion;
-import com.istloja.vistas.GestionContable;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 public class Personabd {
@@ -23,7 +17,7 @@ public class Personabd {
         Statement stm=null;
         //conexion con la base de datos 
         Connection con=null;
-        String sql= "INSERT INTO `bdejercicio1`.`persona` (`id_persona`, `cedula`, `Nombres`, `Apellidos`, `Direccion`, `Correo`, `telefono`) VALUES ('"+String.valueOf(persona.getIdPersona())+"', '"+persona.getCedula()+"', '"+persona.getNombre()+"', '"+persona.getApellido()+"', '"+persona.getDireccion()+"', '"+persona.getCorreo()+"', '"+persona.getTelefono()+"');";                   
+        String sql= "INSERT INTO `bdejercicio1`.`persona` (`id_persona`, `cedula`, `Nombres`, `Apellidos`, `Direccion`, `Correo`, `telefono`) VALUES ('"+String.valueOf(persona.getIdPersona())+"', '"+persona.getCedula()+"', '"+persona.getNombre()+"', '"+persona.getApellido()+"', '"+persona.getDireccion()+"', '"+persona.getCorreo()+"', '"+persona.getTelefono()+"');";                        
         try {
             Conexion conexion =new Conexion();
             con= conexion.conectarBaseDatos();
@@ -31,6 +25,7 @@ public class Personabd {
             stm.execute(sql);
             registrar = true;
             stm.close();
+            con.close();
         } catch(Exception e){
             System.out.println("Error: "+e.getMessage());
         }
@@ -38,9 +33,8 @@ public class Personabd {
         return registrar;
     }
     public boolean editarPersona(Persona persona){
-            
+                    Connection connect=null;
                     Statement stm=null;
-                    Connection con=null;
                     boolean editar= false;
              String sql = " UPDATE `bdejercicio1`.`persona` SET `id_persona` = '"+String.valueOf(persona.getIdPersona())
                      +"', `cedula` = '"+persona.getCedula()
@@ -52,9 +46,9 @@ public class Personabd {
                      +"' WHERE (`id_persona` = '"+String.valueOf(persona.getIdPersona())+"');";
 
           try {
-            Conexion conexion =new Conexion();
-            con= conexion.conectarBaseDatos();
-            stm= con.createStatement();
+            Conexion con =new Conexion();
+            connect= con.conectarBaseDatos();
+            stm= connect.createStatement();
             stm.execute(sql);
             editar = true;
         } catch(SQLException e){
@@ -165,5 +159,64 @@ public class Personabd {
             System.out.println("Error: "+ e.getMessage());
         }
         return c;
-    }       
+    }      
+    
+    public List<Persona> getPersonaNombre(String nombre){
+     Connection co =null;
+        Statement stm=null;
+        ResultSet rs=null;
+        List<Persona>personaEncontradas=new ArrayList<>();
+        String sql="SELECT * FROM bdejercicio1.persona where Nombres like '%"+nombre+"%';";
+        try {
+            co =  new  Conexion().conectarBaseDatos ();
+            stm = co.createStatement ();
+            rs = stm.executeQuery (sql);
+            while (rs.next ()) {
+                Persona c = new Persona ();
+                c.setIdPersona (rs.getInt ( 1 ));
+                c.setCedula (rs.getString ( 2 ));
+                c.setNombre (rs.getString ( 3 ));
+                c.setApellido (rs.getString ( 4 ));
+                c.setDireccion (rs.getString ( 5 ));
+                c.setCorreo (rs.getString ( 6 ));
+                c.setTelefono (rs.getString ( 7 ));
+            }
+            stm . close();
+            rs . close();
+            co . close();
+        } catch ( SQLException e) {
+            System.out.println("Error: "+ e.getMessage());
+        }
+        return personaEncontradas;
+    }
+    //para el open box que me servia sin ese 
+//    public Persona mostrarPersna(String nombre, String id){
+//     Connection co =null;
+//        Statement stm=null;
+//        DefaulTableModel modeltabla = new DefaultableModel(null,columnas);
+//        ResultSet rs=null;
+//        Persona c =null;
+//        String sql="SELECT * FROM bdejercicio1.persona where telefono = "+telefono+";";
+//        try {
+//            co =  new  Conexion().conectarBaseDatos ();
+//            stm = co.createStatement ();
+//            rs = stm.executeQuery (sql);
+//            while (rs.next ()) {
+//                c = new Persona ();
+//                c.setIdPersona (rs.getInt ( 1 ));
+//                c.setCedula (rs.getString ( 2 ));
+//                c.setNombre (rs.getString ( 3 ));
+//                c.setApellido (rs.getString ( 4 ));
+//                c.setDireccion (rs.getString ( 5 ));
+//                c.setCorreo (rs.getString ( 6 ));
+//                c.setTelefono (rs.getString ( 7 ));
+//            }
+//            stm . close();
+//            rs . close();
+//            co . close();
+//        } catch ( SQLException e) {
+//            System.out.println("Error: "+ e.getMessage());
+//        }
+//        return c;
+//    }      
 }

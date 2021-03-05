@@ -82,11 +82,6 @@ public class GestionInventario {
     }
     
      public Inventario datos_vacios() {
-        if (tid_i.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(frameGestionContable, "El campo Id no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            tid_i.requestFocus();// Sirve para ubicar el cursor en un campo vacio.
-            return null;
-        }
         if (tcod_i.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo Codigo no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
             tcod_i.requestFocus();
@@ -120,12 +115,11 @@ public class GestionInventario {
         }
         
         Inventario inventario = new Inventario();
-        inventario.setId_inventario(Integer.parseInt(tid_i.getText()));
-        inventario.setCodigo_pro(Integer.parseInt(tcod_i.getText()));
+        inventario.setCodigo_pro(tcod_i.getText());
         inventario.setDescripcion(tdescripcion_i.getText());
-        inventario.setPrecios_compra(Double.parseDouble(tpc_i.getText()));
-        inventario.setPrecios_venta(Double.parseDouble(tpv_i.getText()));
-        inventario.setCan_productos(Integer.parseInt(tcp_i.getText()));
+        inventario.setPrecios_compra(tpc_i.getText());
+        inventario.setPrecios_venta(tpv_i.getText());
+        inventario.setCan_productos(tcp_i.getText());
         return inventario;
     }
 }

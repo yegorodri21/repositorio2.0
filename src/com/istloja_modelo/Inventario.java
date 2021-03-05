@@ -11,11 +11,11 @@ package com.istloja_modelo;
  */
 public class Inventario {
     private int id_inventario;
-    private int codigo_pro;
+    private String codigo_pro;
     private String descripcion;
-    private Double precios_compra;
-    private Double precios_venta;
-    private int can_productos;
+    private String precios_compra;
+    private String precios_venta;
+    private String can_productos;
     
     @Override
     public String toString() {
@@ -32,58 +32,52 @@ public class Inventario {
 //        this.can_productos =can_productos;
 //    }
 
-  
-    public void setId_inventario(int id_inventario) {
-        this.id_inventario = id_inventario;
-    }
-
-    public void setCodigo_pro(int codigo_pro) {
-        this.codigo_pro = codigo_pro;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void setPrecios_compra(Double precios_compra) {
-        this.precios_compra = precios_compra;
-    }
-
-    public void setPrecios_venta(Double precios_venta) {
-        this.precios_venta = precios_venta;
-    }
-
-    public void setCan_productos(int can_productos) {
-        this.can_productos = can_productos;
-    }
-
     public int getId_inventario() {
         return id_inventario;
     }
 
-    public int getCodigo_pro() {
+    public void setId_inventario(int id_inventario) {
+        this.id_inventario = id_inventario;
+    }
+
+    public String getCodigo_pro() {
         return codigo_pro;
+    }
+
+    public void setCodigo_pro(String codigo_pro) {
+        this.codigo_pro = codigo_pro;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public Double getPrecios_compra() {
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getPrecios_compra() {
         return precios_compra;
     }
 
-    public Double getPrecios_venta() {
+    public void setPrecios_compra(String precios_compra) {
+        this.precios_compra = precios_compra;
+    }
+
+    public String getPrecios_venta() {
         return precios_venta;
     }
 
-    public int getCan_productos() {
+    public void setPrecios_venta(String precios_venta) {
+        this.precios_venta = precios_venta;
+    }
+
+    public String getCan_productos() {
         return can_productos;
     }
-    
-    
-    
 
-    
+    public void setCan_productos(String can_productos) {
+        this.can_productos = can_productos;
+    }
     
 }

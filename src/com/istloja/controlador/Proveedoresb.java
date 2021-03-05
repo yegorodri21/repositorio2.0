@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.istloja.controlador;
 
 import com.istloja.conexionbd.Conexion;
+import com.istloja_modelo.Inventario;
 import com.istloja_modelo.Proveedores;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,10 +11,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Usuario
- */
 public class Proveedoresb {
     public boolean registrarProveedor(Proveedores proveedor){
         boolean registrar= false;
@@ -44,14 +37,15 @@ public class Proveedoresb {
                     Connection connect=null;
                     Statement stm=null;
                     boolean editar= false;
-             String sql = "UPDATE `ejercicio`.`proveedores` SET `ruc` = '"+proveedor.getRuc()+"',"
+             String sql = "UPDATE `ejercicio`.`proveedores` SET `id_persona` = '"+String.valueOf(proveedor.getIdProveedores())
+                     + " `ruc` = '"+proveedor.getRuc()+"',"
                      + " `razon_social` = '"+proveedor.getRazonSocial()+"',"
                      + " `tipo_actividad` = '"+proveedor.getTipoActividad()+"', "
                      + "`nombre_representante_legal` = '"+proveedor.getNombreRepresentanteLegal()+"', "
                      + "`apellido_representante_legal` = '"+proveedor.getApellidosRepresentanteLegal()+"', "
                      + "`telefono` = '"+proveedor.getTelefono()+"', "
                      + "`correo` = '"+proveedor.getCorreo()+"' "
-                     + "WHERE (`id_proveedores` = '"+proveedor.getIdProveedores()+"');";
+                     + "WHERE (`id_proveedores` = '"+String.valueOf(proveedor.getIdProveedores())+"');";
 
           try {
             Conexion con =new Conexion();
@@ -69,7 +63,7 @@ public class Proveedoresb {
             boolean eliminar= false;
                     Statement stm=null;
                     Connection con=null;
-             String sql = "DELETE FROM `ejercicio`.`proveedores` WHERE (`id_proveedores` = '"+proveedor.getIdProveedores()+"');";
+             String sql = "DELETE FROM `ejercicio`.`proveedores` WHERE (`id_proveedores` = '"+String.valueOf(proveedor.getIdProveedores())+"');";
              try {
             Conexion conexion =new Conexion();
             con= conexion.conectarBaseDatos();
@@ -82,11 +76,11 @@ public class Proveedoresb {
         } 
           return eliminar;
    }
-    public List<Proveedores> obtenerpersona(){
+    public List<Proveedores> obtenerProveedores(){
         Connection co=null;
         Statement stm= null;
         ResultSet rs=null;
-        //Persona c=null;
+        Proveedores c=null;
         String sql ="SELECT * FROM `bdejercicio1`.`proveedores`;";
          List<Proveedores> listaProveedores = new ArrayList<Proveedores>();
         try {
@@ -94,7 +88,7 @@ public class Proveedoresb {
             stm = co.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
-                Proveedores c = new Proveedores();
+                c = new Proveedores();
                 c.setIdProveedores(rs.getInt(1));
                 c.setRuc(rs.getString(2));
                 c.setRazonSocial(rs.getString(3));
@@ -172,5 +166,35 @@ public class Proveedoresb {
         }
         return c;
     }      
+    public Proveedores getProveedoresruc(String ruc){
+     Connection co =null;
+        Statement stm=null;
+        ResultSet rs=null;
+        Proveedores c =null;
+        String sql="SELECT * FROM bdejercicio1.proveedores where ruc like "+ruc+";";
+        try {
+            co =  new  Conexion().conectarBaseDatos ();
+            stm = co.createStatement ();
+            rs = stm.executeQuery (sql);
+            while (rs.next ()) {
+                c = new Proveedores ();
+                c.setIdProveedores(rs.getInt ( 1 ));
+                c.setRuc(rs.getString ( 2 ));
+                c.setRazonSocial(rs.getString ( 3 ));
+                c.setRazonSocial(rs.getString ( 4 ));
+                c.setTipoActividad(rs.getString ( 5 ));
+                c.setNombreRepresentanteLegal(rs.getString ( 6 ));
+                c.setApellidosRepresentanteLegal(rs.getString ( 7 ));
+                c.setTelefono(rs.getString ( 8 ));
+                c.setCorreo(rs.getString ( 9 ));
+            }
+            stm . close();
+            rs . close();
+            co . close();
+        } catch ( SQLException e) {
+            System.out.println("Error: "+ e.getMessage());
+        }
+        return c;
+    }
 }
 

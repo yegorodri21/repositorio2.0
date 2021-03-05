@@ -160,19 +160,20 @@ public class Personabd {
         }
         return c;
     }      
-    
-    public List<Persona> getPersonaNombre(String nombre){
-     Connection co =null;
-        Statement stm=null;
-        ResultSet rs=null;
-        List<Persona>personaEncontradas=new ArrayList<>();
-        String sql="SELECT * FROM bdejercicio1.persona where Nombres like '%"+nombre+"%';";
+    //para el open box que me servia sin ese 
+   public List<Persona> obtenerPersonacedula(String cedula) {
+        Connection co = null;
+        Statement stm = null;
+        //Sentencia de JDBC para obtener valores de la base de datos.
+        ResultSet rs = null;
+        String sql = "SELECT * FROM bdejercicio1.persona where cedula like \"%"+cedula+"%\";";
+        List<Persona> listapersonas = new ArrayList<Persona>();
         try {
             co =  new  Conexion().conectarBaseDatos ();
             stm = co.createStatement ();
             rs = stm.executeQuery (sql);
             while (rs.next ()) {
-                Persona c = new Persona ();
+                 Persona c = new Persona ();
                 c.setIdPersona (rs.getInt ( 1 ));
                 c.setCedula (rs.getString ( 2 ));
                 c.setNombre (rs.getString ( 3 ));
@@ -180,6 +181,7 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
+                   listapersonas.add(c);
             }
             stm . close();
             rs . close();
@@ -187,36 +189,36 @@ public class Personabd {
         } catch ( SQLException e) {
             System.out.println("Error: "+ e.getMessage());
         }
-        return personaEncontradas;
-    }
-    //para el open box que me servia sin ese 
-//    public Persona mostrarPersna(String nombre, String id){
-//     Connection co =null;
-//        Statement stm=null;
-//        DefaulTableModel modeltabla = new DefaultableModel(null,columnas);
-//        ResultSet rs=null;
-//        Persona c =null;
-//        String sql="SELECT * FROM bdejercicio1.persona where telefono = "+telefono+";";
-//        try {
-//            co =  new  Conexion().conectarBaseDatos ();
-//            stm = co.createStatement ();
-//            rs = stm.executeQuery (sql);
-//            while (rs.next ()) {
-//                c = new Persona ();
-//                c.setIdPersona (rs.getInt ( 1 ));
-//                c.setCedula (rs.getString ( 2 ));
-//                c.setNombre (rs.getString ( 3 ));
-//                c.setApellido (rs.getString ( 4 ));
-//                c.setDireccion (rs.getString ( 5 ));
-//                c.setCorreo (rs.getString ( 6 ));
-//                c.setTelefono (rs.getString ( 7 ));
-//            }
-//            stm . close();
-//            rs . close();
-//            co . close();
-//        } catch ( SQLException e) {
-//            System.out.println("Error: "+ e.getMessage());
-//        }
-//        return c;
-//    }      
+        return listapersonas;
+    }      
+   public List<Persona> obtenerPersonanombre(String nombre) {
+        Connection co = null;
+        Statement stm = null;
+        //Sentencia de JDBC para obtener valores de la base de datos.
+        ResultSet rs = null;
+        String sql = "SELECT * FROM bdejercicio1.persona where Nombres like \"%"+nombre+"%\";";
+        List<Persona> listapersonas = new ArrayList<Persona>();
+        try {
+            co =  new  Conexion().conectarBaseDatos ();
+            stm = co.createStatement ();
+            rs = stm.executeQuery (sql);
+            while (rs.next ()) {
+                 Persona c = new Persona ();
+                c.setIdPersona (rs.getInt ( 1 ));
+                c.setCedula (rs.getString ( 2 ));
+                c.setNombre (rs.getString ( 3 ));
+                c.setApellido (rs.getString ( 4 ));
+                c.setDireccion (rs.getString ( 5 ));
+                c.setCorreo (rs.getString ( 6 ));
+                c.setTelefono (rs.getString ( 7 ));
+                   listapersonas.add(c);
+            }
+            stm . close();
+            rs . close();
+            co . close();
+        } catch ( SQLException e) {
+            System.out.println("Error: "+ e.getMessage());
+        }
+        return listapersonas;
+    }      
 }

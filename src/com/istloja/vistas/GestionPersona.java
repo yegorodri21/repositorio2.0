@@ -6,6 +6,7 @@
 package com.istloja.vistas;
 import com.istloja_modelo.Persona;
 import com.istloja.utilidad.utilidades;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -19,9 +20,11 @@ public class GestionPersona {
     private JTextField tcorreo;
     private JTextField ttelefono;
     private utilidades utilidades;
+    private JTextField tgenero;
+    private Date fecha_R;
     private JFrame frameGestionContable;
 
-    public GestionPersona(JTextField tcedula, JTextField tnombre, JTextField tapellido, JTextField tdireccion, JTextField tcorreo, JTextField ttelefono, utilidades utilidades, JFrame frameGestionContable) {
+    public GestionPersona(JTextField tcedula, JTextField tnombre, JTextField tapellido, JTextField tdireccion, JTextField tcorreo, JTextField ttelefono, JTextField tgenero, utilidades utilidades, JFrame frameGestionContable) {
         this.tcedula = tcedula;
         this.tnombre = tnombre;
         this.tapellido = tapellido;
@@ -29,61 +32,94 @@ public class GestionPersona {
         this.tcorreo = tcorreo;
         this.ttelefono = ttelefono;
         this.utilidades = utilidades;
+        this.tgenero = tgenero;
         this.frameGestionContable = frameGestionContable;
     }
 
-    
-
-    public JTextField gettcedula() {
+    public JTextField getTcedula() {
         return tcedula;
     }
 
-    public void setTxtCedula(JTextField tcedula) {
+    public void setTcedula(JTextField tcedula) {
         this.tcedula = tcedula;
     }
 
-    public JTextField gettnombres() {
+    public JTextField getTnombre() {
         return tnombre;
     }
 
-    public void setTxtNombres(JTextField txtNombres) {
-        this.tnombre = txtNombres;
+    public void setTnombre(JTextField tnombre) {
+        this.tnombre = tnombre;
     }
 
-    public JTextField getTxtApellidos() {
+    public JTextField getTapellido() {
         return tapellido;
     }
 
-    public void setTxtApellidos(JTextField txtApellidos) {
-        this.tapellido= txtApellidos;
+    public void setTapellido(JTextField tapellido) {
+        this.tapellido = tapellido;
     }
 
-    public JTextField getTxtDireccion() {
+    public JTextField getTdireccion() {
         return tdireccion;
     }
 
-    public void setTxtDireccion(JTextField txtDireccion) {
-        this.tdireccion = txtDireccion;
+    public void setTdireccion(JTextField tdireccion) {
+        this.tdireccion = tdireccion;
     }
 
-    public JTextField getTxtCorreo() {
+    public JTextField getTcorreo() {
         return tcorreo;
     }
 
-    public void setTxtCorreo(JTextField txtCorreo) {
-        this.tcorreo = txtCorreo;
+    public void setTcorreo(JTextField tcorreo) {
+        this.tcorreo = tcorreo;
     }
 
-    public JTextField getTxtTelefono() {
+    public JTextField getTtelefono() {
         return ttelefono;
     }
 
-    public void setTxtTelefono(JTextField txtTelefono) {
-        this.ttelefono = txtTelefono;
+    public void setTtelefono(JTextField ttelefono) {
+        this.ttelefono = ttelefono;
     }
-    
-    
-    
+
+    public utilidades getUtilidades() {
+        return utilidades;
+    }
+
+    public void setUtilidades(utilidades utilidades) {
+        this.utilidades = utilidades;
+    }
+
+    public JTextField getTgenero() {
+        return tgenero;
+    }
+
+    public void setTgenero(JTextField tgenero) {
+        this.tgenero = tgenero;
+    }
+
+    public Date getFecha_R() {
+        return fecha_R;
+    }
+
+    public void setFecha_R(Date fecha_R) {
+        this.fecha_R = fecha_R;
+    }
+
+    public JFrame getFrameGestionContable() {
+        return frameGestionContable;
+    }
+
+    public void setFrameGestionContable(JFrame frameGestionContable) {
+        this.frameGestionContable = frameGestionContable;
+    }
+
+   
+
+
+
      public Persona guardarEditar() {
         if (tcedula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo cedula no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -129,6 +165,12 @@ public class GestionPersona {
             tcorreo.requestFocus();
             return null;
         }
+       if (tgenero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(frameGestionContable, "El campo genero no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            tgenero.requestFocus();
+            return null;
+        }
+        
         Persona persona = new Persona();
         persona.setCedula(tcedula.getText());
         persona.setNombre(tnombre.getText());
@@ -136,6 +178,7 @@ public class GestionPersona {
         persona.setDireccion(tdireccion.getText());
         persona.setCorreo(tcorreo.getText());
         persona.setTelefono(ttelefono.getText());
+        persona.setGenero(tgenero.getText());
         return persona;
     }
     

@@ -15,14 +15,14 @@ import javax.swing.table.AbstractTableModel;
  * @author Usuario
  */
 public class Modeltablepersona extends AbstractTableModel{
-    public String [] m_colNames = {"cedula", "Nombres", "Apellidos", "Direccion", "Correo", "telefono" };
+    public String [] m_colNames = {"cedula", "Nombres", "Apellidos", "Direccion", "Correo", "telefono","genero","fecha_registro" };
     public List<Persona> personas;
-    private ComunicacionPersona comunicacionPersona;
+    //private ComunicacionPersona comunicacionPersona;
     private GestionContable gcontable;
     
     public Modeltablepersona(List<Persona>personas,GestionContable gcontable){
         this.personas=personas;
-        this.gcontable = gcontable;
+        this.gcontable =gcontable;
     }
     @Override
     public int getRowCount() {
@@ -50,6 +50,10 @@ public class Modeltablepersona extends AbstractTableModel{
                 return persona.getCorreo();
             case 5:
                 return persona.getTelefono();
+            case 6:
+                return persona.getGenero();
+            case 7:
+                return persona.getFecha();
             
     }   return new String ();
     }

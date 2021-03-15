@@ -1,4 +1,3 @@
-
 package com.istloja.controlador;
 import com.istloja_modelo.Persona;
 import java.sql.Connection;
@@ -17,7 +16,14 @@ public class Personabd {
         Statement stm=null;
         //conexion con la base de datos 
         Connection con=null;
-        String sql= "INSERT INTO `bdejercicio1`.`persona` (`id_persona`, `cedula`, `Nombres`, `Apellidos`, `Direccion`, `Correo`, `telefono`) VALUES ('"+String.valueOf(persona.getIdPersona())+"', '"+persona.getCedula()+"', '"+persona.getNombre()+"', '"+persona.getApellido()+"', '"+persona.getDireccion()+"', '"+persona.getCorreo()+"', '"+persona.getTelefono()+"');";                        
+        String sql= "INSERT INTO `bdejercicio1`.`persona` (`id_persona`,"
+                + " `cedula`, `Nombres`, `Apellidos`, `Direccion`"
+                + ", `Correo`, `telefono`, `genero`,`fecha_registro`) "
+                + "VALUES ('"+String.valueOf(persona.getIdPersona())+"', "
+                + "'"+persona.getCedula()+"', '"+persona.getNombre()+"', "
+                + "'"+persona.getApellido()+"', '"+persona.getDireccion()+"',"
+                + " '"+persona.getCorreo()+"', '"+persona.getTelefono()+"',"
+                + " '"+persona.getGenero()+"', now());";                        
         try {
             Conexion conexion =new Conexion();
             con= conexion.conectarBaseDatos();
@@ -43,6 +49,7 @@ public class Personabd {
                      +"', `Direccion` = '"+persona.getDireccion()
                      +"', `Correo` = '"+persona.getCorreo()
                      +"', `telefono` = '"+persona.getTelefono()
+                     +"', `genero` = '"+persona.getGenero()
                      +"' WHERE (`id_persona` = '"+String.valueOf(persona.getIdPersona())+"');";
 
           try {
@@ -94,6 +101,9 @@ public class Personabd {
                 c.setDireccion(rs.getString(5));
                 c.setCorreo(rs.getString(6));
                 c.setTelefono(rs.getString(7));
+                c.setGenero(rs.getString(8));
+                c.setFecha(rs.getDate(9));
+
                 listaPersonas.add(c);
             }
             stm.close();
@@ -123,6 +133,8 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
+                c.setGenero(rs.getString(8));
+                c.setFecha(rs.getDate(9));
             }
             stm . close();
             rs . close();
@@ -151,6 +163,8 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
+                c.setGenero(rs.getString( 8 ));
+                c.setFecha(rs.getDate(9));
             }
             stm . close();
             rs . close();
@@ -181,6 +195,8 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
+                c.setGenero(rs.getString ( 8 ));
+                c.setFecha(rs.getDate(9));
                    listapersonas.add(c);
             }
             stm . close();
@@ -211,6 +227,8 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
+                c.setGenero (rs.getString ( 8 ));
+                c.setFecha(rs.getDate(9));
                    listapersonas.add(c);
             }
             stm . close();

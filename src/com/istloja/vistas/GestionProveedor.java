@@ -5,10 +5,12 @@
  */
 package com.istloja.vistas;
 
-/**
- *
- * @author Usuario
- */
+import com.istloja.utilidad.utilidades;
+import com.istloja_modelo.Proveedores;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 class GestionProveedor {
-    
+   
 }

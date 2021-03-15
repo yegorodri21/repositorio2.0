@@ -18,7 +18,11 @@ public class Proveedoresb {
         Statement stm=null;
         //conexion con la base de datos 
         Connection con=null;
-        String sql= "INSERT INTO `bdejercicio1`.`proveedores` (`ruc`, `razon_social`, `tipo_actividad`, `nombre_representante_legal`, `apellido_representante_legar`, `telefono`, `correo`) VALUES ('"+proveedor.getRuc()+"', '"+proveedor.getRazonSocial()+"', '"+proveedor.getTipoActividad()+"', '"+proveedor.getNombreRepresentanteLegal()+"', '"+proveedor.getApellidosRepresentanteLegal()+"', '"+proveedor.getTelefono()+"', '"+proveedor.getCorreo()+"');";               
+        String sql= "INSERT INTO `bdejercicio1`.`proveedores` (`ruc`, `razon_social`, `tipo_actividad`,"
+                + " `nombre_representante_legal`, `apellido_representante_legar`, `telefono`, `correo`, `direccion`, `fecha_registro`)"
+                + " VALUES ('"+proveedor.getRuc()+"', '"+proveedor.getRazonSocial()+"', '"+proveedor.getTipoActividad()+"',"
+                + " '"+proveedor.getNombreRepresentanteLegal()+"', '"+proveedor.getApellidosRepresentanteLegal()+"',"
+                + " '"+proveedor.getTelefono()+"', '"+proveedor.getCorreo()+"', '"+proveedor.getDireccion()+"', now());";               
         try {
             Conexion conexion =new Conexion();
             con= conexion.conectarBaseDatos();
@@ -44,7 +48,8 @@ public class Proveedoresb {
                      + "`nombre_representante_legal` = '"+proveedor.getNombreRepresentanteLegal()+"', "
                      + "`apellido_representante_legal` = '"+proveedor.getApellidosRepresentanteLegal()+"', "
                      + "`telefono` = '"+proveedor.getTelefono()+"', "
-                     + "`correo` = '"+proveedor.getCorreo()+"' "
+                     + "`correo` = '"+proveedor.getCorreo()+"', "
+                     + "`direccion` = '"+proveedor.getDireccion()+"' "
                      + "WHERE (`id_proveedores` = '"+String.valueOf(proveedor.getIdProveedores())+"');";
 
           try {
@@ -97,6 +102,9 @@ public class Proveedoresb {
                 c.setApellidosRepresentanteLegal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setDireccion(rs.getString(9));  
+                c.setFecha_R(rs.getDate(10));                
+
                 listaProveedores.add(c);
             }
             stm.close();
@@ -128,6 +136,10 @@ public class Proveedoresb {
                 c.setApellidosRepresentanteLegal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setDireccion(rs.getString(9));   
+                                                c.setFecha_R(rs.getDate(10));                
+
+
             }
             stm . close();
             rs . close();
@@ -157,6 +169,9 @@ public class Proveedoresb {
                 c.setApellidosRepresentanteLegal(rs.getString(6));
                 c.setTelefono(rs.getString(7));
                 c.setCorreo(rs.getString(8));
+                c.setDireccion(rs.getString(9));                
+                                c.setFecha_R(rs.getDate(10));                
+
             }
             stm . close();
             rs . close();
@@ -187,6 +202,10 @@ public class Proveedoresb {
                 c.setApellidosRepresentanteLegal(rs.getString ( 7 ));
                 c.setTelefono(rs.getString ( 8 ));
                 c.setCorreo(rs.getString ( 9 ));
+                c.setDireccion(rs.getString(10));  
+                                c.setFecha_R(rs.getDate(11));                
+
+
             }
             stm . close();
             rs . close();

@@ -21,12 +21,10 @@ public class Inventariob {
         Statement stm=null;
         //conexion con la base de datos 
         Connection con=null;
-        String sql= "INSERT INTO `bdejercicio1`.`inventario` (`id_inventario`,"
-                + " `codigo_pro`,"
-                + " `descripcion`,"
-                + " `precios_compra`,"
-                + " `precios_venta`,"
-                + " `can_productos`)"
+        String sql= "INSERT INTO `bdejercicio1`.`inventario` (`id_inventario`, `codigo_pro`, `descripcion`,"
+                + " `precio_compra_con_iva`, `precio_compra_sin_iva`, `can_productos`,"
+                + " `precio_mayorista`, `precio_cliente_fijo`, `precio_cliente_normal`,"
+                + " `fecha_actualizacion`, `fecha_caducidad`, `fecha_registro`)"
                 + " VALUES ('"+String.valueOf(inventario.getId_inventario())+"',"
                 + " '"+inventario.getCodigo_pro()+"',"
                 + " '"+inventario.getDescripcion()+"',"

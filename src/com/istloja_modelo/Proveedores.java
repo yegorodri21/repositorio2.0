@@ -1,6 +1,8 @@
 
 package com.istloja_modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Usuario
@@ -14,27 +16,17 @@ public class Proveedores {
     private String ApellidosRepresentanteLegal;
     private String telefono;
     private String correo;
+    private String direccion;
+    private Date fecha_R;
 
-
-    public Proveedores(int idProveedores, String ruc, String razonSocial, String tipoActividad, String nombreRepresentanteLegal, String ApellidosRepresentanteLegal, String telefono, String correo) {
-        this.idProveedores = idProveedores;
-        this.ruc = ruc;
-        this.razonSocial = razonSocial;
-        this.tipoActividad = tipoActividad;
-        this.nombreRepresentanteLegal = nombreRepresentanteLegal;
-        this.ApellidosRepresentanteLegal = ApellidosRepresentanteLegal;
-        this.telefono = telefono;
-        this.correo = correo;
+    @Override
+    public String toString() {
+        return "Proveedores{" + "idProveedores=" + idProveedores + ", ruc=" + ruc + ", razonSocial=" + razonSocial + ", tipoActividad=" + tipoActividad + ", nombreRepresentanteLegal=" + nombreRepresentanteLegal + ", ApellidosRepresentanteLegal=" + ApellidosRepresentanteLegal + ", telefono=" + telefono + ", correo=" + correo + ", direccion=" + direccion + ", fecha_R=" + fecha_R + '}';
     }
-
-    public Proveedores() {
+     public Proveedores() {
 
     }
-
-
     
-    
-
     public int getIdProveedores() {
         return idProveedores;
     }
@@ -99,14 +91,21 @@ public class Proveedores {
         this.correo = correo;
     }
 
-    @Override
-    public String toString() {
-        return "Proveedores{" + "idProveedores=" + idProveedores + ", ruc=" + ruc + ", razonSocial=" + razonSocial + ", tipoActividad=" + tipoActividad + ", nombreRepresentanteLegal=" + nombreRepresentanteLegal + ", ApellidosRepresentanteLegal=" + ApellidosRepresentanteLegal + ", telefono=" + telefono + ", correo=" + correo + '}';
+    public String getDireccion() {
+        return direccion;
     }
-    
-    
 
-    
-    
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Date getFecha_R() {
+        return fecha_R;
+    }
+
+    public void setFecha_R(Date fecha_R) {
+        this.fecha_R = fecha_R;
+    }
+   
 }
 

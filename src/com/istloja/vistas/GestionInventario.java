@@ -16,8 +16,8 @@ public class GestionInventario {
     private JTextField tid_i;
     private JTextField tcod_i;
     private JTextField tdescripcion_i;
-    private JTextField tpc_i;
-    private JTextField tpv_i;
+    private JTextField tpci_i;
+    private JTextField tpcsi_i;
     private JTextField tcp_i;
     private utilidades utilidades;
     private JFrame frameGestionContable;

@@ -16,13 +16,17 @@ public class Persona {
     private String direccion;
     private String correo;
     private String telefono;
+    private int genero;
     private Date fecha;
-    private String genero;
+    private Date fechaActualizacion;
+    private Date fechanacimiendo;
 
     @Override
     public String toString() {
-        return "Persona{" + "idPersona=" + idPersona + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + ", fecha=" + fecha + ", genero=" + genero + '}';
+        return "Persona{" + "idPersona=" + idPersona + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + ", genero=" + genero + ", fecha=" + fecha + ", fechaActualizacion=" + fechaActualizacion + ", fechanacimiendo=" + fechanacimiendo + '}';
     }
+
+   
 
     public int getIdPersona() {
         return idPersona;
@@ -80,6 +84,13 @@ public class Persona {
         this.telefono = telefono;
     }
 
+    public int getGenero() {
+        return genero;
+    }
+
+    public void setGenero(int genero) {
+        this.genero = genero;
+    }
     public Date getFecha() {
         return fecha;
     }
@@ -88,12 +99,20 @@ public class Persona {
         this.fecha = fecha;
     }
 
-    public String getGenero() {
-        return genero;
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
+    public Date getFechanacimiendo() {
+        return fechanacimiendo;
+    }
+
+    public void setFechanacimiendo(Date fechanacimiendo) {
+        this.fechanacimiendo = fechanacimiendo;
+    }
+    
 }

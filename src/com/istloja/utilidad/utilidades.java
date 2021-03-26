@@ -1,15 +1,15 @@
 
 package com.istloja.utilidad;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
     public class utilidades {
     
         public boolean validadorcedula(String cedula){
             boolean cedulaCorrecta = false;
- 
             try {
-
             if (cedula.length() == 10) // ConstantesApp.LongitudCedula
             {
              int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
@@ -79,5 +79,12 @@ import java.util.regex.Pattern;
       }catch (Exception e){
       return false;}
   }
-    
+     public String devolverFecha(Date fecha) {
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        return f.format(fecha);
+    }
+     public Double Iva (Double iva){
+         double total=iva*0.012;
+            return total;
+     }
 }

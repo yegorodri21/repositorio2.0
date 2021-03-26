@@ -2,6 +2,7 @@
 package com.istloja.controlador;
 
 import com.istloja.conexionbd.Conexion;
+import com.istloja.utilidad.utilidades;
 import com.istloja_modelo.Inventario;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,13 +25,19 @@ public class Inventariob {
         String sql= "INSERT INTO `bdejercicio1`.`inventario` (`id_inventario`, `codigo_pro`, `descripcion`,"
                 + " `precio_compra_con_iva`, `precio_compra_sin_iva`, `can_productos`,"
                 + " `precio_mayorista`, `precio_cliente_fijo`, `precio_cliente_normal`,"
-                + " `fecha_actualizacion`, `fecha_caducidad`, `fecha_registro`)"
+                + " `fecha_elaboracion`, `fecha_caducidad`, `fecha_registro`)"
                 + " VALUES ('"+String.valueOf(inventario.getId_inventario())+"',"
                 + " '"+inventario.getCodigo_pro()+"',"
                 + " '"+inventario.getDescripcion()+"',"
-                + " '"+inventario.getPrecios_compra()+"',"
-                + " '"+inventario.getPrecios_venta()+"',"
-                + " '"+inventario.getCan_productos()+"');";
+                + " '"+inventario.getPrecio_compra_con_iva()+"',"
+                + " '"+inventario.getPrecio_compra_sin_iva()+"',"
+                + " '"+inventario.getCan_productos()+"',"
+                + " '"+inventario.getPrecio_mayorista()+"',"
+                + " '"+inventario.getPrecio_cliente_fijo()+"',"
+                + " '"+inventario.getPrecio_cliente_normal()+"',"
+                + " '"+utilidades.devolverFecha(inventario.getFecha_elaboracion())+"',"
+                + " '"+utilidades.devolverFecha(inventario.getFecha_caducidad())+"',"
+                + " now());";
                           
         try {
             Conexion conexion =new Conexion();
@@ -53,9 +60,14 @@ public class Inventariob {
              String sql = "UPDATE `bdejercicio1`.`inventario` SET `id_inventario` = '"+String.valueOf(inventario.getId_inventario())+"',"
                      + " `codigo_pro` = '"+inventario.getCodigo_pro()+"',"
                      + " `descripcion` = '"+inventario.getDescripcion()+"', "
-                     + "`precios_compra` = '"+inventario.getPrecios_compra()+"', "
-                     + "`precios_venta` = '"+inventario.getPrecios_venta()+"', "
-                     + "`can_productos` = '"+inventario.getCan_productos()+"' "
+                     + "`precios_compra_con_iva` = '"+inventario.getPrecio_compra_con_iva()+"', "
+                     + "`precios_compra_sin_iva` = '"+inventario.getPrecio_compra_sin_iva()+"', "
+                     + "`can_productos` = '"+inventario.getCan_productos()+"' ,"
+                     + "`precio_mayorista` = '"+inventario.getPrecio_mayorista()+"', "
+                     + "`precio_cliente_fijo` = '"+inventario.getPrecio_cliente_fijo()+"', "
+                     + "`precio_cliente_normal` = '"+inventario.getPrecio_cliente_normal()+"', "
+                     + "`fecha_elaboracion` = '"+inventario.getFecha_elaboracion()+"', "
+                     + "`fecha_caducidad` = '"+inventario.getFecha_caducidad()+"' "
                      + "WHERE (`id_inventario` = '"+String.valueOf(inventario.getId_inventario())+"');";
 
           try {
@@ -104,9 +116,15 @@ public class Inventariob {
                 c.setId_inventario(rs.getInt(1));
                 c.setCodigo_pro(rs.getString(2));
                 c.setDescripcion(rs.getString(3));
-                c.setPrecios_compra(rs.getString(4));
-                c.setPrecios_venta(rs.getString(5));
-                c.setCan_productos(rs.getString(6));
+                c.setPrecio_compra_con_iva(rs.getDouble(4));
+                c.setPrecio_compra_sin_iva(rs.getDouble(5));
+                c.setPrecio_mayorista(rs.getString(6));
+                c.setPrecio_cliente_fijo(rs.getString(7));
+                c.setPrecio_cliente_normal(rs.getString(8));
+                c.setFecha_elaboracion(rs.getDate(9));
+                c.setFecha_caducidad(rs.getDate(10));
+                c.setFecha_R(rs.getDate(11));
+                
                 listaInventario.add(c);
             }
             stm.close();
@@ -132,9 +150,14 @@ public class Inventariob {
                 c.setId_inventario(rs.getInt ( 1 ));
                 c.setCodigo_pro(rs.getString ( 2 ));
                 c.setDescripcion(rs.getString ( 3 ));
-                c.setPrecios_compra(rs.getString ( 4 ));
-                c.setPrecios_venta(rs.getString ( 5 ));
-                c.setCan_productos(rs.getString ( 6 ));
+                c.setPrecio_compra_con_iva(rs.getDouble(4));
+                c.setPrecio_compra_sin_iva(rs.getDouble(5));
+                c.setPrecio_mayorista(rs.getString(6));
+                c.setPrecio_cliente_fijo(rs.getString(7));
+                c.setPrecio_cliente_normal(rs.getString(8));
+                c.setFecha_elaboracion(rs.getDate(9));
+                c.setFecha_caducidad(rs.getDate(10));
+                c.setFecha_R(rs.getDate(11));
             }
             stm . close();
             rs . close();
@@ -161,9 +184,14 @@ public class Inventariob {
                 c.setId_inventario(rs.getInt(1));
                 c.setCodigo_pro(rs.getString(2));
                 c.setDescripcion(rs.getString(3));
-                c.setPrecios_compra(rs.getString(4));
-                c.setPrecios_venta(rs.getString(5));
-                c.setCan_productos(rs.getString(6));
+                c.setPrecio_compra_con_iva(rs.getDouble(4));
+                c.setPrecio_compra_sin_iva(rs.getDouble(5));
+                c.setPrecio_mayorista(rs.getString(6));
+                c.setPrecio_cliente_fijo(rs.getString(7));
+                c.setPrecio_cliente_normal(rs.getString(8));
+                c.setFecha_elaboracion(rs.getDate(9));
+                c.setFecha_caducidad(rs.getDate(10));
+                c.setFecha_R(rs.getDate(11));
                 listaInventario.add(c);
             }
             stm.close();
@@ -191,9 +219,14 @@ public class Inventariob {
                 c.setId_inventario(rs.getInt(1));
                 c.setCodigo_pro(rs.getString(2));
                 c.setDescripcion(rs.getString(3));
-                c.setPrecios_compra(rs.getString(4));
-                c.setPrecios_venta(rs.getString(5));
-                c.setCan_productos(rs.getString(6));
+                c.setPrecio_compra_con_iva(rs.getDouble(4));
+                c.setPrecio_compra_sin_iva(rs.getDouble(5));
+                c.setPrecio_mayorista(rs.getString(6));
+                c.setPrecio_cliente_fijo(rs.getString(7));
+                c.setPrecio_cliente_normal(rs.getString(8));
+                c.setFecha_elaboracion(rs.getDate(9));
+                c.setFecha_caducidad(rs.getDate(10));
+                c.setFecha_R(rs.getDate(11));
                 listaInventario.add(c);
             }
             stm.close();

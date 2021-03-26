@@ -6,7 +6,9 @@
 package com.istloja.vistas;
 import com.istloja_modelo.Persona;
 import com.istloja.utilidad.utilidades;
+import com.toedter.calendar.JDateChooser;
 import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,12 +22,16 @@ public class GestionPersona {
     private JTextField tcorreo;
     private JTextField ttelefono;
     private utilidades utilidades;
-    private JTextField tgenero;
+    private JComboBox tgenero;
     private Date fecha_R;
+    private Date fecha_A;
+    private Date fecha_nacimiento ;
     private JFrame frameGestionContable;
 
-    public GestionPersona(JTextField tcedula, JTextField tnombre, JTextField tapellido, JTextField tdireccion, JTextField tcorreo, JTextField ttelefono, JTextField tgenero, utilidades utilidades, JFrame frameGestionContable) {
-        this.tcedula = tcedula;
+    
+
+    public GestionPersona(JTextField tcedula, JTextField tnombre, JTextField tapellido, JTextField tdireccion, JTextField tcorreo, JTextField ttelefono, JComboBox tgenero, JDateChooser calendario, utilidades utilidades, GestionContable aThis) {
+    this.tcedula = tcedula;
         this.tnombre = tnombre;
         this.tapellido = tapellido;
         this.tdireccion = tdireccion;
@@ -33,7 +39,23 @@ public class GestionPersona {
         this.ttelefono = ttelefono;
         this.utilidades = utilidades;
         this.tgenero = tgenero;
-        this.frameGestionContable = frameGestionContable;
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public Date getFecha_A() {
+        return fecha_A;
+    }
+
+    public void setFecha_A(Date fecha_A) {
+        this.fecha_A = fecha_A;
+    }
+
+    public Date getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(Date fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
     public JTextField getTcedula() {
@@ -92,11 +114,11 @@ public class GestionPersona {
         this.utilidades = utilidades;
     }
 
-    public JTextField getTgenero() {
+    public JComboBox getTgenero() {
         return tgenero;
     }
 
-    public void setTgenero(JTextField tgenero) {
+    public void setTgenero(JComboBox tgenero) {
         this.tgenero = tgenero;
     }
 
@@ -116,11 +138,8 @@ public class GestionPersona {
         this.frameGestionContable = frameGestionContable;
     }
 
-   
 
-
-
-     public Persona guardarEditar() {
+     public Persona guardarEditar(boolean isEditar) {
         if (tcedula.getText().isEmpty()) {
             JOptionPane.showMessageDialog(frameGestionContable, "El campo cedula no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
             tcedula.requestFocus();// Sirve para ubicar el cursor en un campo vacio.
@@ -165,11 +184,7 @@ public class GestionPersona {
             tcorreo.requestFocus();
             return null;
         }
-       if (tgenero.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(frameGestionContable, "El campo genero no tiene datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            tgenero.requestFocus();
-            return null;
-        }
+       
         
         Persona persona = new Persona();
         persona.setCedula(tcedula.getText());
@@ -178,7 +193,8 @@ public class GestionPersona {
         persona.setDireccion(tdireccion.getText());
         persona.setCorreo(tcorreo.getText());
         persona.setTelefono(ttelefono.getText());
-        persona.setGenero(tgenero.getText());
+        persona.setGenero(tgenero.getSelectedIndex());
+        
         return persona;
     }
     

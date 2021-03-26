@@ -3,6 +3,7 @@ import com.istloja_modelo.Persona;
 import java.sql.Connection;
 import java.sql.Statement;
 import com.istloja.conexionbd.Conexion;
+import com.istloja.utilidad.utilidades;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,20 +11,38 @@ import java.util.List;
 
 
 public class Personabd {
+    public utilidades utilidades;
+
+    public Personabd() {
+        utilidades = new utilidades();
+    }
     public boolean registrarPersona(Persona persona){
         boolean registrar= false;
         //interfaz de acceso a la base de datos
         Statement stm=null;
         //conexion con la base de datos 
         Connection con=null;
-        String sql= "INSERT INTO `bdejercicio1`.`persona` (`id_persona`,"
+        String sql;
+        if(persona.getFechanacimiendo()==null){
+             sql= "INSERT INTO `bdejercicio1`.`persona` (`id_persona`,"
                 + " `cedula`, `Nombres`, `Apellidos`, `Direccion`"
-                + ", `Correo`, `telefono`, `genero`,`fecha_registro`) "
+                + ", `Correo`, `telefono`, `genero`,`fecha_registro`, `fecha_actualizacion`) "
                 + "VALUES ('"+String.valueOf(persona.getIdPersona())+"', "
                 + "'"+persona.getCedula()+"', '"+persona.getNombre()+"', "
                 + "'"+persona.getApellido()+"', '"+persona.getDireccion()+"',"
                 + " '"+persona.getCorreo()+"', '"+persona.getTelefono()+"',"
-                + " '"+persona.getGenero()+"', now());";                        
+                + " '"+persona.getGenero()+"', now(), now());";    
+        }else{
+             sql= "INSERT INTO `bdejercicio1`.`persona` (`id_persona`,"
+                + " `cedula`, `Nombres`, `Apellidos`, `Direccion`"
+                + ", `Correo`, `telefono`, `genero`,`fecha_registro`, `fecha_actualizacion`,`fecha_nacimiento`) "
+                + "VALUES ('"+String.valueOf(persona.getIdPersona())+"', "
+                + "'"+persona.getCedula()+"', '"+persona.getNombre()+"', "
+                + "'"+persona.getApellido()+"', '"+persona.getDireccion()+"',"
+                + " '"+persona.getCorreo()+"', '"+persona.getTelefono()+"',"
+                + " '"+persona.getGenero()+"', now(), now(), '"+utilidades.devolverFecha(persona.getFechanacimiendo())+"');";  
+        }
+                           
         try {
             Conexion conexion =new Conexion();
             con= conexion.conectarBaseDatos();
@@ -50,7 +69,8 @@ public class Personabd {
                      +"', `Correo` = '"+persona.getCorreo()
                      +"', `telefono` = '"+persona.getTelefono()
                      +"', `genero` = '"+persona.getGenero()
-                     +"' WHERE (`id_persona` = '"+String.valueOf(persona.getIdPersona())+"');";
+                     +"', `fecha_actualizacion` = now()"
+                     + ",  `fecha_nacimiento` = '"+persona.getFechanacimiendo()+"' WHERE (`id_persona` = '"+String.valueOf(persona.getIdPersona())+"');";
 
           try {
             Conexion con =new Conexion();
@@ -101,8 +121,11 @@ public class Personabd {
                 c.setDireccion(rs.getString(5));
                 c.setCorreo(rs.getString(6));
                 c.setTelefono(rs.getString(7));
-                c.setGenero(rs.getString(8));
+                c.setGenero(rs.getInt(8));
                 c.setFecha(rs.getDate(9));
+                c.setFechaActualizacion(rs.getDate(10));
+                c.setFechanacimiendo(rs.getDate(11));
+
 
                 listaPersonas.add(c);
             }
@@ -133,8 +156,11 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
-                c.setGenero(rs.getString(8));
+                c.setGenero(rs.getInt(8));
                 c.setFecha(rs.getDate(9));
+                c.setFechaActualizacion(rs.getDate(10));
+                c.setFechanacimiendo(rs.getDate(11));
+
             }
             stm . close();
             rs . close();
@@ -163,8 +189,11 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
-                c.setGenero(rs.getString( 8 ));
+                c.setGenero(rs.getInt(8));
                 c.setFecha(rs.getDate(9));
+                c.setFechaActualizacion(rs.getDate(10));
+                c.setFechanacimiendo(rs.getDate(11));
+  
             }
             stm . close();
             rs . close();
@@ -195,8 +224,11 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
-                c.setGenero(rs.getString ( 8 ));
+                c.setGenero(rs.getInt ( 8 ));
                 c.setFecha(rs.getDate(9));
+                c.setFechaActualizacion(rs.getDate(10));
+                c.setFechanacimiendo(rs.getDate(11));
+                
                    listapersonas.add(c);
             }
             stm . close();
@@ -227,8 +259,10 @@ public class Personabd {
                 c.setDireccion (rs.getString ( 5 ));
                 c.setCorreo (rs.getString ( 6 ));
                 c.setTelefono (rs.getString ( 7 ));
-                c.setGenero (rs.getString ( 8 ));
+                c.setGenero(rs.getInt ( 8 ));
                 c.setFecha(rs.getDate(9));
+                c.setFechaActualizacion(rs.getDate(10));
+                c.setFechanacimiendo(rs.getDate(11));
                    listapersonas.add(c);
             }
             stm . close();
@@ -239,4 +273,6 @@ public class Personabd {
         }
         return listapersonas;
     }      
+
+    
 }

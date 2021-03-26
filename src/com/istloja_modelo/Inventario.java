@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.istloja_modelo;
 
 import java.util.Date;
@@ -15,25 +11,21 @@ public class Inventario {
     private int id_inventario;
     private String codigo_pro;
     private String descripcion;
-    private Double precios_compra;
-    private Double precios_venta;
+    private Double precio_compra_con_iva;
+    private Double precio_compra_sin_iva;
     private String can_productos;
     private String precio_mayorista;
     private String precio_cliente_fijo;
     private String precio_cliente_normal;
-    private Date fecha_elacboracion;
+    private Date fecha_elaboracion;
     private Date fecha_caducidad;
     private Date fecha_R;
 
     @Override
     public String toString() {
-        return "Inventario{" + "id_inventario=" + id_inventario + ", codigo_pro=" + codigo_pro + ", descripcion=" + descripcion + ", precios_compra=" + precios_compra + ", precios_venta=" + precios_venta + ", can_productos=" + can_productos + ", precio_mayorista=" + precio_mayorista + ", precio_cliente_fijo=" + precio_cliente_fijo + ", precio_cliente_normal=" + precio_cliente_normal + ", fecha_elacboracion=" + fecha_elacboracion + ", fecha_caducidad=" + fecha_caducidad + ", fecha_R=" + fecha_R + '}';
+        return "Inventario{" + "id_inventario=" + id_inventario + ", codigo_pro=" + codigo_pro + ", descripcion=" + descripcion + ", precio_compra_con_iva=" + precio_compra_con_iva + ", precio_compra_sin_iva=" + precio_compra_sin_iva + ", can_productos=" + can_productos + ", precio_mayorista=" + precio_mayorista + ", precio_cliente_fijo=" + precio_cliente_fijo + ", precio_cliente_normal=" + precio_cliente_normal + ", fecha_elacboracion=" + fecha_elaboracion + ", fecha_caducidad=" + fecha_caducidad + ", fecha_R=" + fecha_R + '}';
     }
-
     
-    
-    
-
 //    public Inventario(int id_inventario, int codigo_pro, String descripcion, Double precios_compra, Double precios_venta, int can_productos) {
 //        this.id_inventario = id_inventario;
 //        this.codigo_pro = codigo_pro;
@@ -67,21 +59,22 @@ public class Inventario {
         this.descripcion = descripcion;
     }
 
-    public Double getPrecios_compra() {
-        return precios_compra;
+    public Double getPrecio_compra_con_iva() {
+        return precio_compra_con_iva;
     }
 
-    public void setPrecios_compra(Double precios_compra) {
-        this.precios_compra = precios_compra;
+    public void setPrecio_compra_con_iva(Double precio_compra_con_iva) {
+        this.precio_compra_con_iva = precio_compra_con_iva;
     }
 
-    public Double getPrecios_venta() {
-        return precios_venta;
+    public Double getPrecio_compra_sin_iva() {
+        return precio_compra_sin_iva;
     }
 
-    public void setPrecios_venta(Double precios_venta) {
-        this.precios_venta = precios_venta;
+    public void setPrecio_compra_sin_iva(Double precio_compra_sin_iva) {
+        this.precio_compra_sin_iva = precio_compra_sin_iva;
     }
+    
 
     public String getCan_productos() {
         return can_productos;
@@ -115,12 +108,12 @@ public class Inventario {
         this.precio_cliente_normal = precio_cliente_normal;
     }
 
-    public Date getFecha_elacboracion() {
-        return fecha_elacboracion;
+    public Date getFecha_elaboracion() {
+        return fecha_elaboracion;
     }
 
-    public void setFecha_elacboracion(Date fecha_elacboracion) {
-        this.fecha_elacboracion = fecha_elacboracion;
+    public void setFecha_elaboracion(Date fecha_elacboracion) {
+        this.fecha_elaboracion = fecha_elacboracion;
     }
 
     public Date getFecha_caducidad() {

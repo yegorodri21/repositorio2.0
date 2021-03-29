@@ -284,6 +284,21 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        tnota_v = new javax.swing.JTextField();
+        tcedula_v = new javax.swing.JTextField();
+        tnombre_v = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        tfecha_v = new javax.swing.JTextField();
+        tdireccion_v = new javax.swing.JTextField();
+        ttelefono_v = new javax.swing.JTextField();
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -1047,6 +1062,11 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
             }
         });
 
+        tpcsi_i.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tpcsi_iFocusLost(evt);
+            }
+        });
         tpcsi_i.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tpcsi_iActionPerformed(evt);
@@ -1268,6 +1288,117 @@ public class GestionContable extends javax.swing.JFrame implements ComunicacionP
         jTabbedPane4.addTab("Inventario", jPanel6);
 
         jTabbedPane3.addTab("Inventario", jTabbedPane4);
+
+        jLabel37.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel37.setText("NOTA VENTA");
+
+        jLabel38.setText("NUMERO NOTA VENTA");
+
+        jLabel40.setText("CEDULA O RUC CLIENTE");
+
+        jLabel39.setText("NOMBRE CLIENTE ");
+
+        tcedula_v.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tcedula_vKeyPressed(evt);
+            }
+        });
+
+        tnombre_v.setEditable(false);
+
+        jLabel41.setText("DIRECCION ");
+
+        jLabel42.setText("TELFONO");
+
+        jLabel43.setText("FECHA");
+
+        tfecha_v.setEditable(false);
+
+        tdireccion_v.setEditable(false);
+
+        ttelefono_v.setEditable(false);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel38)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel42))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tnombre_v, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                            .addComponent(tcedula_v)
+                            .addComponent(tnota_v)
+                            .addComponent(ttelefono_v))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel41)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel43)
+                                .addGap(9, 9, 9)))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tfecha_v, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(tdireccion_v)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(tnota_v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(tcedula_v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(tnombre_v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41)
+                    .addComponent(tdireccion_v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(jLabel43)
+                    .addComponent(ttelefono_v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfecha_v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(213, 213, 213)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(202, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(916, Short.MAX_VALUE))
+        );
+
+        jTabbedPane5.addTab("Ventas ", jPanel9);
+
         jTabbedPane3.addTab("Ventas", jTabbedPane5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1484,16 +1615,16 @@ if (controladorPersona.getPersonaCedula(tid_i.getText())!=null){
 
     private void guardar_iActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_iActionPerformed
      Inventario i = new Inventario();
-//        i.setCodigo_pro(tcod_i.getText());
-//        i.setDescripcion(tdescripcion_i.getText());
-//        i.setPrecio_compra_con_iva(Double.parseDouble(tpci_i.getText()));
-//        i.setPrecio_compra_sin_iva(Double.parseDouble(tpcsi_i.getText()));
-//        i.setCan_productos(tcp_i.getText());
-//        i.setPrecio_mayorista(tcp_i.getText());
-//        i.setPrecio_cliente_fijo(tcp_i.getText());
-//        i.setPrecio_cliente_normal(tcp_i.getText());
-//        i.setFecha_elaboracion(Date.parse(tcp_i.getText()));
-//        i.setFecha_caducidad(tcp_i.getText());
+        i.setCodigo_pro(tcod_i.getText());
+        i.setDescripcion(tdescripcion_i.getText());
+        i.setPrecio_compra_con_iva(Double.parseDouble(tpci_i.getText()));
+        i.setPrecio_compra_sin_iva(Double.parseDouble(tpcsi_i.getText()));
+        i.setCan_productos(tcp_i.getText());
+        i.setPrecio_mayorista(tcp_i.getText());
+        i.setPrecio_cliente_fijo(tcp_i.getText());
+        i.setPrecio_cliente_normal(tcp_i.getText());
+        i.setFecha_elaboracion(new Date());
+        i.setFecha_caducidad(new Date ());
 
         if (controladorInventario.registrarInventario(i)) {
             JOptionPane.showMessageDialog(rootPane, "Producto guardado con éxito del sitema.");
@@ -1549,18 +1680,8 @@ if (controladorPersona.getPersonaCedula(tid_i.getText())!=null){
     }//GEN-LAST:event_tid_iActionPerformed
 
     private void Bbuscar_iActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bbuscar_iActionPerformed
-        Inventario inventario =controladorInventario.getInventariocodigo(tcod_i.getText());       
-        if(inventario !=null){
-            tdescripcion_i.setText(inventario.getDescripcion());
-            tpci_i.(inventario.getPrecio_compra_con_iva());
-            tpcsi_i.setText(inventario.getPrecio_compra_sin_iva());
-            tcp_i.setText(inventario.getCan_productos());
-            blimpiar.setEnabled(true);
-
-        }else {
-            JOptionPane.showMessageDialog(rootPane, "No se encontro un inventario con ese número de codigo en la base de datos.", "ERROR", JOptionPane.ERROR_MESSAGE);
-           
-        } 
+        
+        
     }//GEN-LAST:event_Bbuscar_iActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -1614,8 +1735,8 @@ if (controladorPersona.getPersonaCedula(tid_i.getText())!=null){
         i.setPrecio_mayorista(tcp_i.getText());
         i.setPrecio_cliente_fijo(tcp_i.getText());
         i.setPrecio_cliente_normal(tcp_i.getText());
-        i.setFecha_elaboracion(Date.parseDate(tcp_i.getText()));
-        i.setFecha_caducidad(tcp_i.getText());
+        i.setFecha_elaboracion(new Date());
+        i.setFecha_caducidad(new Date());
 
         return i;
     }
@@ -1750,7 +1871,7 @@ if (proveedorSeleccionado != null) {
          
          JOptionPane.showMessageDialog(rootPane,"Ingrese solo números");
          tpci_i.setText("");
-         }calculos();
+         }
     }//GEN-LAST:event_tpci_iKeyPressed
 
     private void tpcsi_iKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tpcsi_iKeyPressed
@@ -1843,7 +1964,7 @@ char a=evt.getKeyChar();
 if (cedula.isSelected()){
     if(tcedula.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "Ingrese datos en el campo cedula.", "ERROR", JOptionPane.ERROR_MESSAGE);
-        tcedula.requestFocus();
+                tcedula.requestFocus();
     }else if(!utilidades.validadorcedula(tcedula.getText())){
                 JOptionPane.showMessageDialog(this, "la cédula ingresada esta incorrecta por favor verificar nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
     }
@@ -1887,6 +2008,47 @@ calculos();
         // TODO add your handling code here:
     }//GEN-LAST:event_tcod_iActionPerformed
 
+    private void tpcsi_iFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tpcsi_iFocusLost
+        double valor = precioConIva(Double.parseDouble(tpcsi_i.getText()));
+        tpci_i.setText(String.valueOf(valor));
+        pm_i.setText(String.valueOf(precioMayorista(Double.parseDouble(tpci_i.getText()))));
+        pcf_i.setText(String.valueOf(precioClienteFijo(Double.parseDouble(tpci_i.getText()))));
+        pcn_i.setText(String.valueOf(precioNormal(Double.parseDouble(tpci_i.getText()))));
+    }//GEN-LAST:event_tpcsi_iFocusLost
+
+    private void tcedula_vKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tcedula_vKeyPressed
+         char x=evt.getKeyChar();
+         if(x == KeyEvent.VK_ENTER){
+         Persona persona =controladorPersona.getPersonaCedula(tcedula_v.getText());       
+        if(persona !=null){
+            tnombre_v.setText(persona.getNombre());
+            tdireccion_v.setText(persona.getDireccion());
+            ttelefono_v.setText(persona.getTelefono());
+        }else {
+            JOptionPane.showMessageDialog(rootPane, "Cedula incorrecta intente nuevamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            tcedula_v.setText("");
+            tcedula_v.requestFocus();
+        
+        
+         }}
+         
+        
+    }//GEN-LAST:event_tcedula_vKeyPressed
+ public double precioConIva(double precioSinIva) {
+        return ((precioSinIva * 0.12) + precioSinIva);
+    }
+
+    public double precioMayorista(double precioSinIva) {
+        return ((precioSinIva * 0.10) + precioSinIva);
+    }
+
+    public double precioClienteFijo(double precioSinIva) {
+        return ((precioSinIva * 0.12) + precioSinIva);
+    }
+
+    public double precioNormal(double precioSinIva) {
+        return ((precioSinIva * 0.15) + precioSinIva);
+    }
     /**
      * @param args the command line arguments
      */
@@ -2019,7 +2181,14 @@ calculos();
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2027,6 +2196,7 @@ calculos();
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2034,6 +2204,7 @@ calculos();
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2059,22 +2230,28 @@ calculos();
     private javax.swing.JTable tabla_p;
     private javax.swing.JTextField tapellido;
     private javax.swing.JTextField tcedula;
+    private javax.swing.JTextField tcedula_v;
     private javax.swing.JTextField tcod_i;
     private javax.swing.JTextField tcorreo;
     private javax.swing.JTextField tcp_i;
     private javax.swing.JTextField tdescripcion_i;
     private javax.swing.JTextField tdireccion;
+    private javax.swing.JTextField tdireccion_v;
     private javax.swing.JTextField telefono_p;
+    private javax.swing.JTextField tfecha_v;
     private javax.swing.JComboBox tgenero;
     private javax.swing.JTextField tgenero1;
     private javax.swing.JTextField tid_i;
     private javax.swing.JTextField tnombre;
+    private javax.swing.JTextField tnombre_v;
+    private javax.swing.JTextField tnota_v;
     private javax.swing.JTextField tpci_i;
     private javax.swing.JTextField tpcsi_i;
     private javax.swing.JTextField ttabla;
     private javax.swing.JTextField ttabla_i;
     private javax.swing.JTextField ttelefono;
     private javax.swing.JTextField ttelefono1;
+    private javax.swing.JTextField ttelefono_v;
     // End of variables declaration//GEN-END:variables
     
     @Override
@@ -2108,8 +2285,8 @@ calculos();
         inventarioSeleccionado = i;
         tcod_i.setText(i.getCodigo_pro());
         tdescripcion_i.setText(i.getDescripcion());
-        tpci_i.setText(i.getPrecios_compra());
-        tpcsi_i.setText(i.getPrecios_venta());
+//        tpci_i.setText(i.getPrecio_compra_con_iva());
+//        tpcsi_i.setText(Double.parseDouble(i.getPrecio_compra_sin_iva()));
         tcp_i.setText(i.getCan_productos());
     }
 

@@ -20,13 +20,15 @@ public class Persona {
     private Date fecha;
     private Date fechaActualizacion;
     private Date fechanacimiendo;
-
-    @Override
+    
+   
+    
+     @Override
     public String toString() {
         return "Persona{" + "idPersona=" + idPersona + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", correo=" + correo + ", telefono=" + telefono + ", genero=" + genero + ", fecha=" + fecha + ", fechaActualizacion=" + fechaActualizacion + ", fechanacimiendo=" + fechanacimiendo + '}';
     }
 
-   
+    
 
     public int getIdPersona() {
         return idPersona;

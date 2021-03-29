@@ -16,6 +16,7 @@ public class Personabd {
     public Personabd() {
         utilidades = new utilidades();
     }
+    
     public boolean registrarPersona(Persona persona){
         boolean registrar= false;
         //interfaz de acceso a la base de datos
@@ -274,5 +275,60 @@ public class Personabd {
         return listapersonas;
     }      
 
+   public List<Persona> venta(String cedula) {
+        Connection co=null;
+        Statement stm= null;
+        ResultSet rs=null;
+        Persona c=null;
+        String sql ="SELECT Nombres, Direccion, telefono,now() FROM `bdejercicio1`.`persona` where cedula like \"%"+cedula+"%\";";
+        List<Persona> listaPersonas = new ArrayList<Persona>();
+        try{
+            co= new Conexion ().conectarBaseDatos();
+            stm= co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()){
+                c = new Persona();
+                c.setNombre(rs.getString(1));
+                c.setDireccion(rs.getString(2));
+                c.setTelefono(rs.getString(3));
+                c.setFecha(rs.getDate(4));
+               
+                listaPersonas.add(c);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        }catch (Exception e){
+            System.out.println("Error: "+ e.getMessage());
+        }
+        return listaPersonas;
+    }
+   public List<Persona> ventas(String cedula) {
+        Connection co = null;
+        Statement stm = null;
+        //Sentencia de JDBC para obtener valores de la base de datos.
+        ResultSet rs = null;
+        String sql = "SELECT Nombres, Direccion, telefono FROM bdejercicio1.persona where cedula like \"%"+cedula+"%\";";
+        List<Persona> listapersonas = new ArrayList<Persona>();
+        try {
+            co =  new  Conexion().conectarBaseDatos ();
+            stm = co.createStatement ();
+            rs = stm.executeQuery (sql);
+            while (rs.next ()) {
+                 Persona c = new Persona ();
+                c.setNombre (rs.getString ( 3 ));
+                c.setDireccion (rs.getString ( 5 ));
+                c.setTelefono (rs.getString ( 7 ));
+                
+                   listapersonas.add(c);
+            }
+            stm . close();
+            rs . close();
+            co . close();
+        } catch ( SQLException e) {
+            System.out.println("Error: "+ e.getMessage());
+        }
+        return listapersonas;
+    }      
     
 }
